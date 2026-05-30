@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueming Nail — Price List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0ea;
+    --warm-white: #faf8f5;
+    --sand: #e8dfd4;
+    --rose: #c9a48a;
+    --rose-dark: #9e7460;
+    --text-main: #2c2420;
+    --text-mid: #6b5a51;
+    --text-light: #a0897d;
+    --divider: rgba(180,150,130,0.25);
+    --divider-strong: rgba(180,150,130,0.45);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text-main);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(210,185,165,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 85% 80%, rgba(195,170,150,0.14) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .site-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.25rem 4rem;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .header-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--rose);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 8vw, 58px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--text-main);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-title em {
+    font-style: italic;
+    color: var(--rose-dark);
+  }
+
+  .header-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--rose);
+    margin: 1.25rem auto 0;
+    opacity: 0.6;
+  }
+
+  /* Tabs */
+  .tabs-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--divider-strong);
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    transition: color 0.25s;
+    white-space: nowrap;
+  }
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 1.5px;
+    background: var(--rose-dark);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .tab-btn.active {
+    color: var(--text-main);
+    font-weight: 400;
+  }
+
+  .tab-btn.active::after {
+    transform: scaleX(1);
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--text-mid);
+  }
+
+  /* Panels */
+  .panel { display: none; animation: fadeIn 0.35s ease; }
+  .panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Section titles */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 2rem 0 1rem;
+  }
+
+  .section-label-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--rose);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .section-label-line {
+    flex: 1;
+    height: 1px;
+    background: var(--divider-strong);
+  }
+
+  /* Price items */
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--divider);
+    align-items: start;
+    transition: background 0.2s;
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item-name {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-main);
+    margin-bottom: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .item-desc {
+    font-size: 11.5px;
+    color: var(--text-light);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  .item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-main);
+    text-align: right;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .item-price .price-note {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 10px;
+    color: var(--text-light);
+    font-weight: 300;
+    display: block;
+    text-align: right;
+    margin-bottom: 2px;
+    letter-spacing: 0.06em;
+  }
+
+  .price-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+  }
+
+  .price-pair span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-main);
+  }
+
+  .price-pair .tag {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 10px;
+    color: var(--text-light);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+
+  /* Note box */
+  .note-box {
+    margin: 1.5rem 0;
+    padding: 14px 18px;
+    border-left: 2px solid var(--rose);
+    background: rgba(201,164,138,0.08);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .note-box p {
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
+
+  /* Info card */
+  .info-card {
+    margin-top: 2rem;
+    padding: 20px 22px;
+    border: 1px solid var(--divider-strong);
+    border-radius: 8px;
+    background: rgba(255,252,248,0.7);
+  }
+
+  .info-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--rose);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .info-card p {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 2;
+    letter-spacing: 0.03em;
+  }
+
+  .info-card strong {
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding-top: 3rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--divider);
+  }
+
+  .footer-script {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rose);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-sub {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* Responsive */
+  @media (max-width: 420px) {
+    .tab-btn { padding: 0.75rem 1rem; font-size: 12px; }
+    .item-name { font-size: 14px; }
+    .item-price { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="site-wrap">
+
+  <header>
+    <p class="header-eyebrow">Nail Salon · Price List</p>
+    <h1 class="header-title">Blueming <em>Nail</em></h1>
+    <div class="header-rule"></div>
+  </header>
+
+  <nav class="tabs-wrap" role="tablist">
+    <button class="tab-btn active" role="tab" aria-selected="true" onclick="switchTab('ladies', this)">女士服務</button>
+    <button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab('gel', this)">凝膠美甲</button>
+    <button class="tab-btn" role="tab" aria-selected="false" onclick="switchTab('men', this)">男士服務</button>
+  </nav>
+
+  <!-- 女士服務 -->
+  <section id="ladies" class="panel active" role="tabpanel">
+
+    <div class="section-label">
+      <span class="section-label-text">手部保養</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-name">手部基礎保養</div>
+        <div class="item-desc">修型／指緣軟化／甘皮修剪／兩側硬皮／硬甲油／指緣修護</div>
+      </div>
+      <div class="item-price">$600</div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">手部精緻保養</div>
+        <div class="item-desc">修型／指緣軟化／甘皮修剪／兩側硬皮／硬甲油<br>去角質至手腕／保濕乳／指緣修護</div>
+      </div>
+      <div class="item-price">$1,100</div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">手部頂級 SPA</div>
+        <div class="item-desc">修型／指緣軟化／甘皮修剪／兩側硬皮／硬甲油<br>去角質至手肘／保濕熱敷／舒緩按摩／指緣修護</div>
+      </div>
+      <div class="item-price">$1,600</div>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">足部保養</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-name">足部基礎保養</div>
+        <div class="item-desc">海鹽浴／修型／甘皮修剪／兩側硬皮／硬甲油／指緣修護</div>
+      </div>
+      <div class="item-price">$700</div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">足部精緻保養</div>
+        <div class="item-desc">海鹽浴／修型／甘皮修剪／崁甲清潔／兩側硬皮／硬甲油<br>去角質至腳踝／保濕乳／指緣修護</div>
+      </div>
+      <div class="item-price">$1,300</div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">足部頂級 SPA</div>
+        <div class="item-desc">海鹽浴／修型／甘皮修剪／崁甲清潔／兩側硬皮／硬甲油<br>搓足底／去角質至膝蓋／保濕熱敷／舒緩按摩／指緣修護</div>
+      </div>
+      <div class="item-price">$2,200</div>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">加購項目</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div><div class="item-name">手部水潤煥白護理</div></div>
+      <div class="item-price">$400</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">足部水潤煥白護理</div></div>
+      <div class="item-price">$500</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">搓足底</div></div>
+      <div class="item-price">$800</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">崁甲處理</div></div>
+      <div class="price-pair">
+        <span><span class="tag">單指</span>$300</span>
+        <span><span class="tag">雙指</span>$500</span>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">剪指甲修型</div>
+        <div class="item-desc">指甲修型／硬甲油／指緣油</div>
+      </div>
+      <div class="item-price">$150</div>
+    </div>
+
+    <div class="note-box">
+      <p>＊ 手足精緻保養使用孟亞</p>
+      <p>＊ 手足頂級 SPA 使用 Sabon</p>
+    </div>
+
+  </section>
+
+  <!-- 凝膠美甲 -->
+  <section id="gel" class="panel" role="tabpanel">
+
+    <div class="section-label">
+      <span class="section-label-text">凝膠款式</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div><div class="item-name">養甲透明凝膠</div></div>
+      <div class="item-price">$1,000</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">單色凝膠</div></div>
+      <div class="item-price">$1,100</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">貓眼凝膠</div></div>
+      <div class="item-price">$1,300</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">亮片漸層凝膠</div></div>
+      <div class="item-price">$1,300</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">素色漸層凝膠</div></div>
+      <div class="item-price">$1,500</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">鏡面</div></div>
+      <div class="item-price">$1,400</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">平法式凝膠</div></div>
+      <div class="item-price">$1,200</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">微笑法式凝膠</div></div>
+      <div class="item-price">$1,600</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">造型款式</div></div>
+      <div class="item-price">$1,200 up</div>
+    </div>
+
+    <div class="note-box">
+      <p>凝膠項目皆含基礎護理、加厚</p>
+      <p>※ 依素材複雜難易度，現場狀況調整</p>
+      <p>※ 依圖報價（預約時請先傳圖報價）</p>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">加色費用</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div><div class="item-name">跳色（兩色以內）</div></div>
+      <div class="item-price">$100</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">多色</div></div>
+      <div class="item-price">$300</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">加底色</div></div>
+      <div class="item-price">$100</div>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">卸甲 / 延補甲</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div><div class="item-name">卸甲續做</div></div>
+      <div class="price-pair">
+        <span><span class="tag">本店</span>$300</span>
+        <span><span class="tag">他店</span>$350</span>
+      </div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">純卸甲</div></div>
+      <div class="price-pair">
+        <span><span class="tag">本店</span>$500</span>
+        <span><span class="tag">他店</span>$600</span>
+      </div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">卸指甲油</div></div>
+      <div class="item-price">$50</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">延甲（單指）</div></div>
+      <div class="price-pair">
+        <span>$150</span>
+        <span><span class="tag">特長</span>$190</span>
+      </div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">補甲（單指）</div></div>
+      <div class="item-price">$100</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">店家資訊</div>
+      <p>
+        <strong>採預約制</strong>，營業時間 10:00 – 20:00<br>
+        ※ 非營業時間預約須加價 $200<br>
+        <strong>地址：</strong>台中市西屯區中清路二段 1250 巷 53 號<br>
+        店門口即可停機車、汽車
+      </p>
+    </div>
+
+  </section>
+
+  <!-- 男士服務 -->
+  <section id="men" class="panel" role="tabpanel">
+
+    <div class="section-label">
+      <span class="section-label-text">手部保養</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-name">手部基礎保養</div>
+        <div class="item-desc">修型／指緣軟化／甘皮修剪／兩側硬皮／硬甲油／指緣修護</div>
+      </div>
+      <div class="item-price">$1,000</div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">手部深層保養 SPA</div>
+        <div class="item-desc">修型／指緣軟化／甘皮修剪／兩側硬皮／硬甲油<br>去角質至手肘／熱敷膜／保濕乳按摩／指緣潤澤修護</div>
+      </div>
+      <div class="item-price">$2,000</div>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">足部保養</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-name">足部基礎保養</div>
+        <div class="item-desc">海鹽浴／修型／甘皮修剪／兩側硬皮／硬甲油／指緣修護</div>
+      </div>
+      <div class="item-price">$1,100</div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">足部深層 SPA</div>
+        <div class="item-desc">海鹽浴／修型／甘皮修剪／崁甲清潔／兩側硬皮／硬甲油<br>搓足底／去角質至膝蓋／敷膜／保濕乳按摩／指緣修護</div>
+      </div>
+      <div class="item-price">$2,600</div>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">加購項目</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="item">
+      <div><div class="item-name">搓足底</div></div>
+      <div class="item-price">$1,000</div>
+    </div>
+    <div class="item">
+      <div><div class="item-name">崁甲處理</div></div>
+      <div class="price-pair">
+        <span><span class="tag">單指</span>$300</span>
+        <span><span class="tag">雙指</span>$500</span>
+      </div>
+    </div>
+    <div class="item">
+      <div>
+        <div class="item-name">剪指甲修型</div>
+        <div class="item-desc">指甲修型／硬甲油／指緣油</div>
+      </div>
+      <div class="item-price">$150</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="footer-script">Blueming Nail</div>
+    <p class="footer-sub">台中 · Taichung</p>
+  </footer>
+
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+}
+</script>
+</body>
+</html>
